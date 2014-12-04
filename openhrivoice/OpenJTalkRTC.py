@@ -56,23 +56,25 @@ class OpenJTalkWrap(VoiceSynthBase):
     def __init__(self):
         VoiceSynthBase.__init__(self)
         self._conf = config()
-        self._args = (("td", "tree-dur.inf"),
-                      ("tf", "tree-lf0.inf"),
-                      ("tm", "tree-mgc.inf"),
-                      ("md", "dur.pdf"),
-                      ("mf", "lf0.pdf"),
-                      ("mm", "mgc.pdf"),
-                      ("df", "lf0.win1"),
-                      ("df", "lf0.win2"),
-                      ("df", "lf0.win3"),
-                      ("dm", "mgc.win1"),
-                      ("dm", "mgc.win2"),
-                      ("dm", "mgc.win3"),
-                      ("ef", "tree-gv-lf0.inf"),
-                      ("em", "tree-gv-mgc.inf"),
-                      ("cf", "gv-lf0.pdf"),
-                      ("cm", "gv-mgc.pdf"),
-                      ("k", "gv-switch.inf"))
+        self._args = ()
+# harumi 2014.12.04 Change with a change voice form of open_jtalk ver 1.07.
+#        self._args = (("td", "tree-dur.inf"),
+#                      ("tf", "tree-lf0.inf"),
+#                      ("tm", "tree-mgc.inf"),
+#                      ("md", "dur.pdf"),
+#                      ("mf", "lf0.pdf"),
+#                      ("mm", "mgc.pdf"),
+#                      ("df", "lf0.win1"),
+#                      ("df", "lf0.win2"),
+#                      ("df", "lf0.win3"),
+#                      ("dm", "mgc.win1"),
+#                      ("dm", "mgc.win2"),
+#                      ("dm", "mgc.win3"),
+#                      ("ef", "tree-gv-lf0.inf"),
+#                      ("em", "tree-gv-mgc.inf"),
+#                      ("cf", "gv-lf0.pdf"),
+#                      ("cm", "gv-mgc.pdf"),
+#                      ("k", "gv-switch.inf"))
         cmdarg = []
         cmdarg.append(self._conf._openjtalk_bin)
         (stdoutstr, stderrstr) = subprocess.Popen(cmdarg, stdout = subprocess.PIPE, stderr = subprocess.PIPE).communicate()
@@ -102,16 +104,26 @@ Some rights reserved.
         # command line for OpenJTalk
         cmdarg = []
         cmdarg.append(self._conf._openjtalk_bin)
-        for o, v in self._args:
-            cmdarg.append("-"+o)
-            if character == "female":
-                cmdarg.append(os.path.join(self._conf._openjtalk_phonemodel_female_ja, v))
-            else:
-                cmdarg.append(os.path.join(self._conf._openjtalk_phonemodel_male_ja, v))
-        cmdarg.append("-s")
-        cmdarg.append("32000")
-        cmdarg.append("-p")
-        cmdarg.append("160")
+        # harumi 2014.12.04 Change to comment out with a change voice form of open_jtalk ver 1.07.
+        #for o, v in self._args:
+        #    cmdarg.append("-"+o)
+        #    if character == "female":
+        #        cmdarg.append(os.path.join(self._conf._openjtalk_phonemodel_female_ja, v))
+        #    else:
+        #        cmdarg.append(os.path.join(self._conf._openjtalk_phonemodel_male_ja, v))
+        if character == "female":
+            cmdarg.append("-m")
+            cmdarg.append(self._conf._openjtalk_phonemodel_female_ja)
+        else:
+            cmdarg.append("-m")
+            cmdarg.append(self._conf._openjtalk_phonemodel_male_ja)
+
+        cmdarg.append("-z")
+        cmdarg.append("2000")
+#        cmdarg.append("-s")
+#        cmdarg.append("16000")
+#        cmdarg.append("-p")
+#        cmdarg.append("160")
         cmdarg.append("-x")
         cmdarg.append(self._conf._openjtalk_dicfile_ja)
         cmdarg.append("-ow")

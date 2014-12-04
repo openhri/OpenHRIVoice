@@ -43,6 +43,8 @@ class config():
         self._lexicondb = os.path.join(self._configdir, 'lexcon.db')
 
         if self._platform == "Windows":
+            #harumi 2014_12_04 dictation-kit change with an upgrade.
+            #self._julius_runkitdir = os.path.join(self._basedir, "3rdparty", "dictation-kit-v4.0-win")
             self._julius_runkitdir = os.path.join(self._basedir, "3rdparty", "dictation-kit-v4.0-win")
             self._julius_voxforgedir = os.path.join(self._basedir, "3rdparty", "julius-voxforge-build726")
             self._julius_bin = os.path.join(self._julius_runkitdir, "bin", "julius.exe")
@@ -66,9 +68,18 @@ class config():
 
         if self._platform == "Windows":
             self._openjtalk_bin = os.path.join(self._basedir, "open_jtalk.exe")
-            self._openjtalk_phonemodel_male_ja =  os.path.join(self._basedir, "3rdparty", "hts_voice_nitech_jp_atr503_m001-1.04")
-            self._openjtalk_phonemodel_female_ja =  os.path.join(self._basedir, "3rdparty", "MMDAgent_Example-1.0/Voice/mei_normal")
-            self._openjtalk_dicfile_ja = os.path.join(self._basedir, "3rdparty", "open_jtalk_dic_utf_8-1.04")
+
+            #harumi 2014_12_04 change to upgrade with a voice data form of open_jtalk.
+            #self._openjtalk_phonemodel_male_ja =  os.path.join(self._basedir, "3rdparty", "hts_voice_nitech_jp_atr503_m001-1.04")
+            self._openjtalk_phonemodel_male_ja =  os.path.join(self._basedir, "3rdparty", "hts_voice_nitech_jp_atr503_m001-1.05", "nitech_jp_atr503_m001.htsvoice")
+
+            #harumi 2014_12_04 change to upgrade with a voice data form of open_jtalk, and 
+            #self._openjtalk_phonemodel_female_ja =  os.path.join(self._basedir, "3rdparty", "MMDAgent_Example-1.0/Voice/mei_normal")
+            self._openjtalk_phonemodel_female_ja =  os.path.join(self._basedir, "3rdparty", "MMDAgent_Example-1.4", "Voice", "mei", "mei_normal.htsvoice")
+
+            #harumi 2014_12_04 change to use dic with open_jtalk(ver1.07) build.
+            #self._openjtalk_dicfile_ja = os.path.join(self._basedir, "3rdparty", "open_jtalk_dic_utf_8-1.04")
+            self._openjtalk_dicfile_ja = os.path.join(self._basedir, "3rdparty", "dic_utf_8")
         else:
             self._openjtalk_bin = "open_jtalk"
             self._openjtalk_phonemodel_male_ja = "/usr/lib/hts-voice/nitech-jp-atr503-m001"
@@ -76,7 +87,10 @@ class config():
             self._openjtalk_dicfile_ja = "/usr/lib/open_jtalk/dic/utf-8"
 
         if self._platform == "Windows":
-            self._festivaldir = os.path.join(self._basedir, "3rdparty", "festival-1.96.03-win", "festival")
+            #harumi 2014_12_04 change with a change in the folder structure of festival.
+            #self._festivaldir = os.path.join(self._basedir, "3rdparty", "festival-1.96.03-win", "festival")
+            self._festivaldir = os.path.join(self._basedir, "3rdparty", "festival")
+
             self._festival_bin = os.path.join(self._festivaldir, "festival.exe")
             self._festival_opt = ["--libdir", os.path.join(self._festivaldir, "lib")]
         else:
@@ -84,7 +98,9 @@ class config():
             self._festival_opt = []
 
         if self._platform == "Windows":
-            self._soxdir = os.path.join(self._basedir, "3rdparty", "sox-14.3.2")
+            #harumi 2014_12_04 change to upgrade with a voice data form of open_jtalk.
+            #self._soxdir = os.path.join(self._basedir, "3rdparty", "sox-14.3.2")
+            self._soxdir = os.path.join(self._basedir, "3rdparty", "sox-14-4-1")
             self._sox_bin = os.path.join(self._soxdir, "sox.exe")
         else:
             self._sox_bin = "sox"
