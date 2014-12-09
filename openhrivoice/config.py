@@ -100,7 +100,7 @@ class config():
         if self._platform == "Windows":
             #harumi 2014_12_04 change to upgrade with a voice data form of open_jtalk.
             #self._soxdir = os.path.join(self._basedir, "3rdparty", "sox-14.3.2")
-            self._soxdir = os.path.join(self._basedir, "3rdparty", "sox-14-4-1")
+            self._soxdir = os.path.join(self._basedir, "3rdparty", "sox-14.4.1")
             self._sox_bin = os.path.join(self._soxdir, "sox.exe")
         else:
             self._sox_bin = "sox"
