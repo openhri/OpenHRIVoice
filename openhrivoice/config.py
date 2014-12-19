@@ -82,9 +82,12 @@ class config():
             self._openjtalk_dicfile_ja = os.path.join(self._basedir, "3rdparty", "dic_utf_8")
         else:
             self._openjtalk_bin = "open_jtalk"
-            self._openjtalk_phonemodel_male_ja = "/usr/lib/hts-voice/nitech-jp-atr503-m001"
+            #self._openjtalk_phonemodel_male_ja = "/usr/lib/hts-voice/nitech-jp-atr503-m001"
+            self._openjtalk_phonemodel_male_ja = "/usr/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
+            #self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
             self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
-            self._openjtalk_dicfile_ja = "/usr/lib/open_jtalk/dic/utf-8"
+            #self._openjtalk_dicfile_ja = "/usr/lib/open_jtalk/dic/utf-8"
+            self._openjtalk_dicfile_ja = "/var/lib/mecab/dic/open-jtalk/naist-jdic/"
 
         if self._platform == "Windows":
             #harumi 2014_12_04 change with a change in the folder structure of festival.
