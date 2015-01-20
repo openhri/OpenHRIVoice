@@ -95,13 +95,14 @@ class config():
         #harumi 2015_01_14 change with 3rdparty setting
                 if ubuntu_osname == "precise":
             		self._openjtalk_phonemodel_male_ja = "/usr/local/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
-            		self._openjtalk_phonemodel_female_ja = "/usr/local/lib/mmdagent/voice/mei_normal"
+            		#self._openjtalk_phonemodel_female_ja = "/usr/local/lib/mmdagent/voice/mei_normal"
             		self._openjtalk_dicfile_ja = "/usr/local/share/open-jtalk/dic/utf-8"
                 else:
             		self._openjtalk_phonemodel_male_ja = "/usr/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
-            		self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
+            		#self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
             		self._openjtalk_dicfile_ja = "/var/lib/mecab/dic/open-jtalk/naist-jdic"
 
+	    self._openjtalk_phonemodel_female_ja = "/usr/local/lib/mmdagent/voice/mei_normal"
             self._openjtalk_bin = "open_jtalk"
             #self._openjtalk_phonemodel_male_ja = "/usr/lib/hts-voice/nitech-jp-atr503-m001"
             #self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
