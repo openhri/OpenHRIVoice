@@ -31,6 +31,11 @@ from openhrivoice import utils
 class config():
     def __init__(self):
         self._platform = platform.system()
+
+        if self._platform != "Windows":
+		my_platform_list =  platform.platform().split("-")
+		ubuntu_osname = my_platform_list[len(my_platform_list)-1]
+
         if hasattr(sys, "frozen"):
             self._basedir = os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding()))
         else:
@@ -52,10 +57,16 @@ class config():
             self._julius_hlist_en = os.path.join(self._julius_voxforgedir, "tiedlist")
             self._julius_dict_en = os.path.join(self._julius_voxforgedir, "dict")
         else:
-            self._julius_runkitdir = "/usr/share/julius-runkit"
+	#harumi 2015_01_14 change with 3rdparty setting
+		if ubuntu_osname == "precise":
+			self._julius_runkitdir = "/usr/local/share/julius-runkit"
+			##self._julius_bin = "/usr/bin/julius"
+		else:
+			self._julius_runkitdir = "/usr/share/julius-runkit"
+			##self._julius_bin = "/usr/bin/julius"
             self._julius_voxforgedir = "/usr/share/julius-voxforge"
             self._julius_voxforgedir_de = "/usr/share/julius-voxforge-de"
-            self._julius_bin = "/usr/bin/julius"
+	    self._julius_bin = "/usr/bin/julius"
             self._julius_hmm_en = os.path.join(self._julius_voxforgedir, "acoustic", "hmmdefs")
             self._julius_hlist_en = os.path.join(self._julius_voxforgedir, "acoustic", "tiedlist")
             self._julius_dict_en = "/usr/share/doc/julius-voxforge/dict.gz"
@@ -81,13 +92,20 @@ class config():
             #self._openjtalk_dicfile_ja = os.path.join(self._basedir, "3rdparty", "open_jtalk_dic_utf_8-1.04")
             self._openjtalk_dicfile_ja = os.path.join(self._basedir, "3rdparty", "dic_utf_8")
         else:
+        #harumi 2015_01_14 change with 3rdparty setting
+                if ubuntu_osname == "precise":
+            		self._openjtalk_phonemodel_male_ja = "/usr/local/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
+            		self._openjtalk_phonemodel_female_ja = "/usr/local/lib/mmdagent/voice/mei_normal"
+            		self._openjtalk_dicfile_ja = "/usr/local/share/open-jtalk/dic/utf-8"
+                else:
+            		self._openjtalk_phonemodel_male_ja = "/usr/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
+            		self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
+            		self._openjtalk_dicfile_ja = "/var/lib/mecab/dic/open-jtalk/naist-jdic"
+
             self._openjtalk_bin = "open_jtalk"
             #self._openjtalk_phonemodel_male_ja = "/usr/lib/hts-voice/nitech-jp-atr503-m001"
-            self._openjtalk_phonemodel_male_ja = "/usr/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
             #self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
-            self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
             #self._openjtalk_dicfile_ja = "/usr/lib/open_jtalk/dic/utf-8"
-            self._openjtalk_dicfile_ja = "/var/lib/mecab/dic/open-jtalk/naist-jdic/"
 
         if self._platform == "Windows":
             #harumi 2014_12_04 change with a change in the folder structure of festival.

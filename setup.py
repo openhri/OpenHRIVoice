@@ -16,7 +16,7 @@ except ImportError:
 
 try:
     import py2exe
-    sys.path.append("openhrivoice")
+    sys.path.append("openhrivoice2.10")
 except ImportError:
     pass
 
@@ -62,10 +62,19 @@ setup(name='openhrivoice',
       author_email='yosuke.matsusaka@aist.go.jp',
       url='http://openhri.net/',
       license='EPL',
+      data_files = [('/usr/share/openhrivoice2.10',['util/setup_3rdparty_1204.sh',
+						    'util/dictation_kit.sh','util/func_setup.sh',
+						    'util/mmdagent_example.sh',
+						    'util/uninstall_3rdparty.sh',
+						    'util/hts_voice.sh',
+					      	    'util/open_jtalk_dic_utf_8.sh']),
+		    ('/usr/share/openhrivoice2.10/lice_dir',['util/lice_dir/hts_voice_copyright.txt',
+							     'util/lice_dir/mmdagent_mei_copyright.txt',
+							     'util/lice_dir/julius_copyright_utf8.txt',
+							     'util/lice_dir/utf_8_copyright.txt'])],
       packages=find_packages(exclude=['ez_setup', 'doc', 'examples', 'tests']),
       include_package_data=True,
       package_data={'openhrivoice': ['*.dfa', '*.dict', '*.xsd']},
-      data_files=data_files,
       zip_safe=False,
       install_requires=[
         # -*- Extra requirements: -*-
