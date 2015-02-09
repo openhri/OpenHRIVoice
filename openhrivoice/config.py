@@ -58,22 +58,20 @@ class config():
             self._julius_dict_en = os.path.join(self._julius_voxforgedir, "dict")
         else:
 	#harumi 2015_01_14 change with 3rdparty setting
+        #       2015_02_03 change with julius-voxforge package.
+	    self._julius_runkitdir = "/usr/local/share/julius-runkit"
             if ubuntu_osname == "precise":
-		self._julius_runkitdir = "/usr/local/share/julius-runkit"
-		##self._julius_bin = "/usr/bin/julius"
+                self._julius_dict_en = "/usr/share/doc/julius-voxforge/dict.gz"
             else:
-		self._julius_runkitdir = "/usr/share/julius-runkit"
-		##self._julius_bin = "/usr/bin/julius"
+                self._julius_dict_en = "/usr/share/julius-voxforge/acoustic/dict"
             self._julius_voxforgedir = "/usr/share/julius-voxforge"
             self._julius_voxforgedir_de = "/usr/share/julius-voxforge-de"
 	    self._julius_bin = "/usr/bin/julius"
             self._julius_hmm_en = os.path.join(self._julius_voxforgedir, "acoustic", "hmmdefs")
             self._julius_hlist_en = os.path.join(self._julius_voxforgedir, "acoustic", "tiedlist")
-            #harumi 2-15_02_03 change with julius-voxforge package.
-            #self._julius_dict_en = "/usr/share/doc/julius-voxforge/dict.gz"
-            self._julius_dict_en = "/usr/share/julius-voxforge/acoustic/dict"
             self._julius_hmm_de = os.path.join(self._julius_voxforgedir_de, "acoustic", "hmmdefs")
             self._julius_hlist_de = os.path.join(self._julius_voxforgedir_de, "acoustic", "tiedlist")
+
         self._julius_hmm_ja = os.path.join(self._julius_runkitdir, "model", "phone_m", "hmmdefs_ptm_gid.binhmm")
         self._julius_hlist_ja = os.path.join(self._julius_runkitdir, "model", "phone_m", "logicalTri")
         self._julius_ngram_ja = os.path.join(self._julius_runkitdir, "model", "lang_m", "web.60k.8-8.bingramv5.gz")
@@ -95,10 +93,19 @@ class config():
             self._openjtalk_dicfile_ja = os.path.join(self._basedir, "3rdparty", "dic_utf_8")
         else:
             #harumi 2015_01_14 change with 3rdparty setting
-            self._openjtalk_phonemodel_male_ja = "/usr/local/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
+            if ubuntu_osname == "precise":
+                self._openjtalk_phonemodel_male_ja = "/usr/local/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
+            else:
+                self._openjtalk_phonemodel_male_ja = "/usr/share/hts-voice/nitech-jp-atr503-m001/nitech_jp_atr503_m001.htsvoice"
+                
+                #self._openjtalk_dicfile_ja = "/usr/local/share/open_jtalk/dic/utf-8"
+
+
+            self._openjtalk_dicfile_ja = "/var/lib/mecab/dic/open-jtalk/naist-jdic"
             self._openjtalk_phonemodel_female_ja = "/usr/local/lib/mmdagent/voice/mei_normal"
-            self._openjtalk_dicfile_ja = "/usr/local/share/open-jtalk/dic/utf-8"
             self._openjtalk_bin = "open_jtalk"
+
+	
 
             #self._openjtalk_phonemodel_male_ja = "/usr/lib/hts-voice/nitech-jp-atr503-m001"
             #self._openjtalk_phonemodel_female_ja = "/usr/lib/mmdagent/voice/mei_normal"
