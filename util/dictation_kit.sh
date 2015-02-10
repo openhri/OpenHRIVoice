@@ -21,13 +21,13 @@ echo "${target_url}"
 func_DL $target_name "${target_url}" "${target_option1}" "${target_option2}" 
 
 # Set archive name in target_file .
-target_file="dictation-kit-v4.2.3-linux.tgz"
+target_file="dictation-kit-v4.2.3.tar.gz"
 
 # Extrac archive.
-func_extracFile $target_file $target_installPath
+#func_extracFile $target_file $target_installPath
 
 # Set to Symbolic link.
-/usr/bin/sudo /bin/ln -s /usr/local/share/dictation-kit-v4.2.3 /usr/local/share/julius-runkit
+#/usr/bin/sudo /bin/ln -s /usr/local/share/dictation-kit-v4.2.3 /usr/local/share/julius-runkit
 
 }
 
